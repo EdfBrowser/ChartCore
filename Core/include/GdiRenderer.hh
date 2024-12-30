@@ -41,6 +41,19 @@ class GdiRenderer : public IRenderer {
     delete g;
   }
 
+  virtual void DrawString(const wchar_t* str, Font font, PointF origin) override {
+    Gdiplus::Graphics* g = CreateGraphics(m_bitmap);
+
+    Gdiplus::SolidBrush penBrush(Gdiplus::Color::Black);
+    Gdiplus::Font gfont(font.family, font.size, font.style,
+                        Gdiplus::Unit::UnitPixel);
+
+    g->DrawString(str, 12, &gfont, Gdiplus::PointF(origin.x, origin.y),
+                  &penBrush);
+
+    delete g;
+  }
+
   virtual void DrawLine(Point p1, Point p2) override {
     Gdiplus::Graphics* g = CreateGraphics(m_bitmap);
 

@@ -1,4 +1,4 @@
-#ifndef __RENDERERCONTEXT_HH__
+﻿#ifndef __RENDERERCONTEXT_HH__
 #define __RENDERERCONTEXT_HH__
 
 #include "D2dRenderer.hh"
@@ -33,6 +33,8 @@ class RendererContext {
     m_renderer->Clear();
     m_renderer->DrawLine(Point(10, 10), Point(200, 200));
     m_renderer->FillRect(Rect(200, 200, 400, 400));
+
+    m_renderer->DrawString(L"World", Font(L"Consolas", 12, 0), PointF(400, 400));
   }
 
   void Save(const wchar_t* file, const wchar_t* format) {
