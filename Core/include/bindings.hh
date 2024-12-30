@@ -16,8 +16,9 @@
 #endif
 
 extern "C" {
-DLL_API void* createContext(int type);
-DLL_API bool destroyContext(void* ptr);
-DLL_API void Render(void* ptr, unsigned int width, unsigned int height);
-DLL_API void SaveToFile(const WCHAR* file, void* ptr);
+DLL_API void* CreateContext(int type);
+DLL_API bool DestroyContext(void* ptr);
+DLL_API void Resize(void* ptr, unsigned int width, unsigned int height);
+DLL_API void Render(void* ptr);
+DLL_API void SaveToFile(const wchar_t* file, const wchar_t* format, void* ptr);
 }

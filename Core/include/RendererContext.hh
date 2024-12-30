@@ -21,12 +21,26 @@ class RendererContext {
 
   ~RendererContext() { delete m_renderer; }
 
-  void Render(unsigned int width, unsigned int height) {
+  void Resize(unsigned int width, unsigned int height) {
+    if (width < 10 || height < 10) return;
     m_renderer->CreateBitmap(width, height);
-    m_renderer->DrawLine(Point(10, 10), Point(200, 200));
+    Render();
   }
 
-  void Save(const WCHAR* file) { m_renderer->Save(file); }
+  void Render() {
+    // 计算出边距
+
+    m_renderer->Clear();
+    m_renderer->DrawLine(Point(10, 10), Point(200, 200));
+    m_renderer->FillRect(Rect(200, 200, 400, 400));
+  }
+
+  void Save(const wchar_t* file, const wchar_t* format) {
+    m_renderer->Save(file, format);
+  }
+
+ private:
+  void Layout() {}
 
  private:
   IRenderer* m_renderer;

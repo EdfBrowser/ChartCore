@@ -11,7 +11,7 @@
  * @return void* A pointer to a new RendererContext. Returns nullptr if the
  * input is invalid.
  */
-DLL_API void* createContext(int type) {
+DLL_API void* CreateContext(int type) {
   if (type < 0 || type > 1) {
     return nullptr;
   }
@@ -28,7 +28,7 @@ DLL_API void* createContext(int type) {
  *
  * @param ptr A void* pointer to the RendererContext instance to be deleted.
  */
-DLL_API bool destroyContext(void* ptr) {
+DLL_API bool DestroyContext(void* ptr) {
   if (ptr == nullptr) {
     return false;
   }
@@ -40,7 +40,7 @@ DLL_API bool destroyContext(void* ptr) {
   return true;
 }
 
-DLL_API void Render(void* ptr, unsigned int width, unsigned int height) {
+DLL_API void Resize(void* ptr, unsigned int width, unsigned int height) {
   if (ptr == nullptr) {
     return;
   }
@@ -48,14 +48,25 @@ DLL_API void Render(void* ptr, unsigned int width, unsigned int height) {
   ChartCore::RendererContext* contextPrt =
       static_cast<ChartCore::RendererContext*>(ptr);
 
-  contextPrt->Render(width, height);
+  contextPrt->Resize(width, height);
 }
 
-DLL_API void SaveToFile(const WCHAR* file, void* ptr) {
+DLL_API void Render(void* ptr) {
+  if (ptr == nullptr) {
+    return;
+  }
+
+  ChartCore::RendererContext* contextPrt =
+      static_cast<ChartCore::RendererContext*>(ptr);
+
+  contextPrt->Render();
+}
+
+DLL_API void SaveToFile(const wchar_t* file, const wchar_t* format, void* ptr) {
   if (ptr == nullptr) {
     return;
   }
   ChartCore::RendererContext* contextPrt =
       static_cast<ChartCore::RendererContext*>(ptr);
-  contextPrt->Save(file);
+  contextPrt->Save(file, format);
 }
