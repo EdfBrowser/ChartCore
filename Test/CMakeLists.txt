@@ -19,11 +19,11 @@ add_dependencies(copy_dll ${PROJECT_NAME})
 
 if(CHART_CORE_LIB_PATH)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${CHART_CORE_LIB_PATH})
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include)
 else()
     message(FATAL_ERROR "ChartCoreLib library not found!")
 endif()
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/Core/include)
 
 
 

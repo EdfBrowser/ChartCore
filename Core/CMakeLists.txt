@@ -4,8 +4,13 @@ project(ChartCoreLib)
 set(src_dir ${CMAKE_SOURCE_DIR}/Core/src)
 set(header_dir ${CMAKE_SOURCE_DIR}/Core/include)
 set(header_files 
-    ${header_dir}/GdiplusManager.hh
-    ${header_dir}/bindings.hh)
+    ${header_dir}/bindings.hh
+    # Render
+    ${header_dir}/IRenderer.hh
+    ${header_dir}/D2dRenderer.hh
+    ${header_dir}/GdiRenderer.hh
+    ${header_dir}/RendererContext.hh)
+    
 set(src_files ${src_dir}/bindings.cc)
 
 add_library(${PROJECT_NAME} SHARED ${src_files})

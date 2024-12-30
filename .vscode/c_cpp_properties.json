@@ -1,0 +1,21 @@
+{
+    "version": 4,
+    "enableConfigurationSquiggles": true,
+    "configurations": [
+        {
+            "name": "Win32",
+            "cppStandard": "c++14",
+            "cStandard": "c17",
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/HostX64/x64/cl.exe",
+            "intelliSenseMode": "${default}",
+            "includePath": [
+                "${workspaceFolder}/Core/include"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/Core/include"
+                ]
+            }
+        }
+    ]
+}

@@ -3,8 +3,11 @@
 #include "bindings.hh"
 
 int main(int argc, char** argv) {
-  auto ptr = createGdiplusManager();
-  std::cout << "st:" << ptr->st << std::endl;
-  destroyGdiplusManager(ptr);
+  void* ptr = createContext(0);
+  Render(ptr, 500, 500);
+
+  SaveToFile(L"out.png", ptr);
+
+  destroyContext(ptr);
   return 0;
 }
